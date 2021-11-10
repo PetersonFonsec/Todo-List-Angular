@@ -2,38 +2,33 @@
   <div class="card">
     <div class="card_header">
       <h1>Task</h1>
-      <div class="card_icon"></div>
+      <div class="card_icon">🚀</div>
     </div>
 
-    <form>
-      <input type="text" placeholder="Notes..." />
+    <form #form="ngForm" (ngSubmit)="addTask()">
+      <input
+        type="text"
+        [(ngModel)]="newTask"
+        #taskName="ngModel"
+        name="newTask"
+        placeholder="Notes..."
+      />
     </form>
 
     <hr />
 
-    <ul class="card_list">
-      <li>
-        <label for="">
-          <input type="checkbox" name="" id="" />
-          Here’s a task item
-        </label>
-      </li>
-      <li>
-        <label for="">
-          <input type="checkbox" name="" id="" />
-          Here’s a task item
-        </label>
-      </li>
-      <li>
-        <label for="">
-          <input type="checkbox" name="" id="" />
-          Here’s a task item
-        </label>
-      </li>
-      <li>
-        <label for="">
-          <input type="checkbox" name="" id="" />
-          Here’s a task item
+    <span *ngIf="!tasks.length"> No tasks ... </span>
+
+    <ul *ngIf="tasks.length">
+      <li *ngFor="let task of tasks; let i = index">
+        <label [for]="i">
+          <input
+            type="checkbox"
+            name="task"
+            [checked]="task.isComplet"
+            [id]="i"
+          />
+          {{ task.title }}
         </label>
       </li>
     </ul>
