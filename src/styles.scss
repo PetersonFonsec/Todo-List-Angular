@@ -78,3 +78,30 @@ label {
   cursor: pointer;
   width: 100%;
 }
+
+input[type="text"] {
+  border: none;
+  font-size: var(--font-size-medium);
+  padding: 0;
+
+  &:placeholder {
+    color: var(--font-color-medium);
+    font-size: var(--font-size-medium);
+  }
+}
+
+input[type="checkbox"] {
+  appearance: none;
+  background: linear-gradient(
+    -90deg,
+    var(--color-checkbox) 0%,
+    var(--color-bg-contrast) 100%
+  );
+  border: 2px solid var(--color-border);
+  border-radius: 5px;
+  cursor: pointer;
+  height: 24px;
+  width: 24px;
+
+  margin-right: 10px;
+}
