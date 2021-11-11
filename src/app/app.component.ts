@@ -10,8 +10,13 @@ type Task = {
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   tasks: Task[] = [];
+  STORAGE_KEY = '@TODO_LIST/TASKS';
+
+  ngOnInit(): void {
+    this.loadTasks();
+  }
 
   addTask(newTask: string): void {
     if (!this.validTask(newTask)) return;
@@ -20,14 +25,16 @@ export class AppComponent {
       title: newTask,
       isComplet: false,
     });
+
+    this.storageTasks();
   }
 
   storageTasks(): void {
-    localStorage.setItem('', JSON.stringify(this.tasks));
+    localStorage.setItem(this.STORAGE_KEY, JSON.stringify(this.tasks));
   }
 
   loadTasks(): void {
-    const tasks = localStorage.getItem('');
+    const tasks = localStorage.getItem(this.STORAGE_KEY);
     if (tasks) this.tasks = JSON.parse(tasks);
   }
 
@@ -45,5 +52,6 @@ export class AppComponent {
 
       return task;
     });
+    this.storageTasks();
   }
 }
