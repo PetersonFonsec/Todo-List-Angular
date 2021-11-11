@@ -77,6 +77,10 @@ label {
   display: flex;
   cursor: pointer;
   width: 100%;
+
+  &.isComplet {
+    text-decoration-line: line-through;
+  }
 }
 
 input[type="text"] {

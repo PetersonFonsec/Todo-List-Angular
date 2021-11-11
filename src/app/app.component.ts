@@ -33,4 +33,12 @@ export class AppComponent {
   clearInput(): void {
     this.newTask = '';
   }
+
+  toggleTask(taskName: string): void {
+    this.tasks = this.tasks.map((task) => {
+      if (task.title === taskName) task.isComplet = !task.isComplet;
+
+      return task;
+    });
+  }
 }
