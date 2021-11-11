@@ -7,8 +7,6 @@
 
     <app-form-search (submit)="addTask($event)"></app-form-search>
 
-    <hr />
-
     <span *ngIf="!tasks.length"> No tasks ... </span>
 
     <ul *ngIf="tasks.length">

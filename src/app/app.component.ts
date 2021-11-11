@@ -11,17 +11,28 @@ type Task = {
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  title = 'todo-list';
   tasks: Task[] = [];
 
   addTask(newTask: string): void {
-    if (typeof newTask !== 'string') return;
-    if (this.hasTask(newTask) || !newTask) return;
+    if (!this.validTask(newTask)) return;
 
     this.tasks.push({
       title: newTask,
       isComplet: false,
     });
+  }
+
+  storageTasks(): void {
+    localStorage.setItem('', JSON.stringify(this.tasks));
+  }
+
+  loadTasks(): void {
+    const tasks = localStorage.getItem('');
+    if (tasks) this.tasks = JSON.parse(tasks);
+  }
+
+  validTask(newTask: string): boolean {
+    return !this.hasTask(newTask) && !!newTask && typeof newTask === 'string';
   }
 
   hasTask(newTask: string): boolean {
