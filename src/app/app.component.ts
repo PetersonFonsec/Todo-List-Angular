@@ -16,7 +16,7 @@ export class AppComponent {
   newTask = '';
 
   addTask(): void {
-    if (this.hasTask()) return this.clearInput();
+    if (this.hasTask() || !this.newTask) return this.clearInput();
 
     this.tasks.push({
       title: this.newTask,
