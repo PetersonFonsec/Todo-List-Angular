@@ -5,15 +5,7 @@
       <div class="card_icon">🚀</div>
     </div>
 
-    <form #form="ngForm" (ngSubmit)="addTask()">
-      <input
-        type="text"
-        [(ngModel)]="newTask"
-        #taskName="ngModel"
-        name="newTask"
-        placeholder="Notes..."
-      />
-    </form>
+    <app-form-search (submit)="addTask($event)"></app-form-search>
 
     <hr />
 
@@ -21,16 +13,13 @@
 
     <ul *ngIf="tasks.length">
       <li *ngFor="let task of tasks; let i = index">
-        <label [ngClass]="{ isComplet: task.isComplet }" [for]="i">
-          <input
-            (click)="toggleTask(task.title)"
-            type="checkbox"
-            name="task"
-            [checked]="task.isComplet"
-            [id]="i"
-          />
-          {{ task.title }}
-        </label>
+        <app-task
+          (toggleTask)="toggleTask(task.title)"
+          [isComplet]="task.isComplet"
+          [title]="task.title"
+          [id]="i"
+        >
+        </app-task>
       </li>
     </ul>
   </div>

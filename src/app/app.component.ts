@@ -13,25 +13,19 @@ type Task = {
 export class AppComponent {
   title = 'todo-list';
   tasks: Task[] = [];
-  newTask = '';
 
-  addTask(): void {
-    if (this.hasTask() || !this.newTask) return this.clearInput();
+  addTask(newTask: string): void {
+    if (typeof newTask !== 'string') return;
+    if (this.hasTask(newTask) || !newTask) return;
 
     this.tasks.push({
-      title: this.newTask,
+      title: newTask,
       isComplet: false,
     });
-
-    this.clearInput();
   }
 
-  hasTask(): boolean {
-    return this.tasks.map((task) => task.title).includes(this.newTask);
-  }
-
-  clearInput(): void {
-    this.newTask = '';
+  hasTask(newTask: string): boolean {
+    return this.tasks.map((task) => task.title).includes(newTask);
   }
 
   toggleTask(taskName: string): void {

@@ -1,0 +1,9 @@
+<form #form="ngForm" (ngSubmit)="_submit()">
+  <input
+    type="text"
+    [(ngModel)]="newTask"
+    #taskName="ngModel"
+    name="newTask"
+    placeholder="Notes..."
+  />
+</form>

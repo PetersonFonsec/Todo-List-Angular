@@ -1,0 +1,10 @@
+<label [ngClass]="{ isComplet: isComplet }" [for]="id">
+  <input
+    (click)="click()"
+    type="checkbox"
+    name="task"
+    [checked]="isComplet"
+    [id]="id"
+  />
+  {{ title }}
+</label>
