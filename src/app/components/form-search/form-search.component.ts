@@ -10,7 +10,7 @@ export class FormSearchComponent {
   newTask = '';
 
   _submit(): void {
-    this.submit.emit(this.newTask);
+    this.submit.emit(this.newTask?.trim());
     this.clearInput();
   }
 
