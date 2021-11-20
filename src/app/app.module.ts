@@ -7,9 +7,16 @@ import { AppComponent } from './app.component';
 import { TaskComponent } from './components/task/task.component';
 import { FormSearchComponent } from './components/form-search/form-search.component';
 
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 @NgModule({
   declarations: [AppComponent, TaskComponent, FormSearchComponent],
-  imports: [BrowserModule, AppRoutingModule, FormsModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    FormsModule,
+    BrowserAnimationsModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })

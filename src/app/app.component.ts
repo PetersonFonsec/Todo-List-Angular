@@ -1,3 +1,4 @@
+import { animation } from './shared/animations/transitions';
 import { Component, OnInit } from '@angular/core';
 
 type Task = {
@@ -9,6 +10,7 @@ type Task = {
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
+  animations: [animation],
 })
 export class AppComponent implements OnInit {
   tasks: Task[] = [];
